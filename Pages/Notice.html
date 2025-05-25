@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공지사항</title>
+  
+    <link rel="stylesheet" href="../Css/font.css" />
+    <link rel="stylesheet" href="../Css/Notice.css" />
+
+</head>
+<body>
+  <div class="top-bar">
+    <h1>공지사항</h1>
+  </div>
+
+  <div id="postContainer">
+    <!-- 게시글이 여기에 JS로 삽입됨 -->
+  </div>
+
+  <script>
+    const posts = [
+      {
+        id: 1,
+        title: "<필독> 문중문고 FAQ",
+        content: "이것은 FAQ 내용입니다.",
+        date: "2025-05-01",
+        isPinned: true
+      },
+      {
+        id: 2,
+        title: "문중문고 5월 이용 관련 공지",
+        content: "5월 이용 관련 공지 내용입니다.",
+        date: "2025-05-03"
+      },
+      {
+        id: 3,
+        title: "문중문고 신설",
+        content: "문중문고 신설 관련 내용입니다.",
+        date: "2025-04-25"
+      },
+    ];
+
+    const postContainer = document.getElementById('postContainer');
+
+    if (posts.length === 0) {
+      postContainer.innerHTML = `<div class="no-posts">게시글이 없습니다.</div>`;
+    } else {
+      posts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'post-title';
+        titleDiv.innerHTML = post.title;
+        titleDiv.onclick = () => {
+          const contentDiv = postDiv.querySelector('.post-content');
+          const isVisible = contentDiv.style.display === 'block';
+          contentDiv.style.display = isVisible ? 'none' : 'block';
+        };
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'post-content';
+        contentDiv.innerHTML = `
+          <p>${post.content}</p>
+          <p><strong>작성일:</strong> ${post.date}</p>
+        `;
+
+        postDiv.appendChild(titleDiv);
+        postDiv.appendChild(contentDiv);
+        postContainer.appendChild(postDiv);
+      });
+    }
+  </script>
+</body>
+</html>

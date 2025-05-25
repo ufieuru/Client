@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>도서 상세 페이지</title>
+  
+  <link rel="stylesheet" href="../Css/font.css" />
+  <link rel="stylesheet" href="../Css/searchresult.css" />
+  <style>
+    .button {
+      flex: 1;
+      padding: 15px;
+      background-color: #f0f0f0;
+      border: 1px solid #aaa;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      font-size: 16px;
+      min-width: 120px;
+      white-space: nowrap;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #007bff; /* hover 시 배경색 */
+      color: white;              /* hover 시 글자색 */
+    }
+
+    .subject-tags {
+      margin: 30px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #E3F2FD;
+    }
+  </style>
+</head>
+<body>
+
+  <a id="arrow">←</a>
+  <h1>표제</h1>
+
+  <div class="container">
+    <div class="cover-section">
+      <div class="cover">표지</div>
+      <div class="buttons-row">
+        <div class="button">대출</div>
+        <div class="button">예약</div>
+        <div class="button" id="likeButton">
+          <span id="heartIcon" class="heart-icon empty">🤍</span> 관심
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <p><strong>저자:</strong> OOO</p>
+      <p><strong>판사항:</strong> OOO</p>
+      <p><strong>발행사항:</strong> OOO</p>
+      <p><strong>형태사항:</strong> OOO</p>
+      <p><strong>청구기호:</strong> OOO</p>
+      <p><strong>MARC:</strong> OOO</p>
+    </div>
+  </div>
+
+  <div class="subject-tags">
+    <h3>상세 장서 정보</h3>
+    <p>소설 / 시 / 희곡 &gt; 영어소설</p>
+    <p>고전 &gt; ~~~ &gt; ~~~ </p>
+  </div>
+
+  <div class="review">
+    <div class="review-header">
+      <h3>리뷰</h3>
+      <button class="register-button" id="registerButton">등록</button>
+    </div>
+
+    <div id="reviewList">
+      <div class="review-item">
+        <div class="review-meta">
+          <strong>익명1</strong>
+          <span class="review-date">2024/12/3</span>
+        </div>
+        <p>감명 깊게 읽었습니다. 책의 내용이 매우 인상적이네요.</p>
+      </div>
+      <div class="review-item">
+        <div class="review-meta">
+          <strong>익명2</strong>
+          <span class="review-date">2022/5/13</span>
+        </div>
+        <p>너무 재밌었다. 다음에 또 읽고 싶어요~!</p>
+      </div>
+    </div>
+
+    <div class="typobox" id="typobox">
+      <textarea id="reviewInput" rows="4" placeholder="리뷰를 입력하세요..."></textarea>
+      <br />
+      <button class="submit-button" id="submitReview">리뷰 등록</button>
+    </div>
+  </div>
+
+  <!-- 모달 -->
+  <div class="modal" id="popupModal">
+    <div class="modal-content">
+      <p>팝업이 열렸습니다</p>
+      <button class="close-btn" id="closeModal">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    // 모달
+    const arrow = document.getElementById('arrow');
+    const modal = document.getElementById('popupModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    arrow.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // 하트 토글
+    const likeButton = document.getElementById('likeButton');
+    const heartIcon = document.getElementById('heartIcon');
+
+    likeButton.addEventListener('click', () => {
+      if (heartIcon.classList.contains('filled')) {
+        heartIcon.classList.remove('filled');
+        heartIcon.classList.add('empty');
+        heartIcon.textContent = '🤍';
+      } else {
+        heartIcon.classList.remove('empty');
+        heartIcon.classList.add('filled');
+        heartIcon.textContent = '❤️';
+      }
+    });
+
+    // 리뷰 등록
+    const registerButton = document.getElementById('registerButton');
+    const typobox = document.getElementById('typobox');
+    const reviewInput = document.getElementById('reviewInput');
+    const submitReview = document.getElementById('submitReview');
+    const reviewList = document.getElementById('reviewList');
+    let reviewerCount = 3;
+
+    registerButton.addEventListener('click', () => {
+      typobox.style.display = 'block';
+      reviewInput.focus();
+    });
+
+    submitReview.addEventListener('click', () => {
+      const content = reviewInput.value.trim();
+      if (!content) return;
+
+      const today = new Date();
+      const dateStr = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
+
+      const reviewItem = document.createElement('div');
+      reviewItem.className = 'review-item';
+      reviewItem.innerHTML = `
+        <div class="review-meta">
+          <strong>익명${reviewerCount++}</strong>
+          <span class="review-date">${dateStr}</span>
+        </div>
+        <p>${content}</p>
+      `;
+
+      reviewList.prepend(reviewItem);
+      reviewInput.value = '';
+      typobox.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

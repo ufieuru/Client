@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>문중문고</title>
+  
+  <link rel="stylesheet" href="../Css/font.css" />
+  <link rel="stylesheet" href="../Css/MainPage.css" />
+  <link rel="stylesheet" href="../Css/navi.css" />
+</head>
+<body>
+  <div class="main-container">
+    <!-- 상단 바 -->
+    <header class="header">
+      <a class="title" href="/">문중문고</a>
+      <a class="login-btn" href="Login.Pgs/login.html">로그인 / 회원가입</a>
+    </header>
+
+    <!-- 검색창 -->
+    <div class="search-bar">
+      <input type="text" placeholder="검색어를 입력하세요" />
+      <button onclick="window.location.href='SearchPage.html'">검색</button>
+    </div>
+
+    <!-- 상태 버튼 -->
+    <div class="status-buttons">
+      <a href="../Pages/MyPage.Pgs/mypage.html" class="notification">
+        <span>현재<br>대출 중<br>📖</span>
+        <span class="badge">3</span>
+      </a>
+      <a href="../Pages/MyPage.Pgs/mypage.html" class="notification">
+        <span>현재<br>예약 중<br>⏰</span>
+        <span class="badge">3</span>
+      </a>
+      <a href="../Pages/MyPage.Pgs/mypage.html" class="notification">
+        <span>현재<br>연체 중<br>⚠️</span>
+        <span class="badge">5</span>
+      </a>
+    </div>
+
+    <!-- 공지 -->
+    <div class="section-wrapper">
+      <div class="section-header">
+        <span>📢 공지</span>
+        <a class="plus-button" href="Notice.html">＋</a>
+      </div>
+      <div class="card large-card">
+        <table class="board-table">
+          <tbody>
+            <tr><td class="title">제목입니다.</td><td>24-01-20</td></tr> 
+            <tr><td class="title">제목입니다.</td><td>24-01-19</td></tr>
+            <tr><td class="title">제목입니다.</td><td>24-01-18</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 아래쪽 영역 -->
+    <div class="bottom-sections">
+      <!-- 큐레이션 -->
+      <div class="section tall">
+        <div class="section-header">
+          <span>👩‍🏫 큐레이션</span>
+          <a class="plus-button" href="../Pages/Curation.Pgs/Curation.html">＋</a>
+        </div>
+        <div class="card tall-card">
+          <table class="board-table">
+            <tbody>
+              <tr><td class="title">제목입니다.</td><td>24-01-20</td></tr>
+              <tr><td class="title">제목입니다.</td><td>24-01-19</td></tr>
+              <tr><td class="title">제목입니다.</td><td>24-01-18</td></tr>
+              <tr><td class="title">제목입니다.</td><td>24-01-17</td></tr>
+              <tr><td class="title">제목입니다.</td><td>24-01-16</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <!-- 문중문고 소개 -->
+        <div class="section small">
+          <div class="section-header">
+            <span>📚 문중문고 소개</span>
+            <a class="plus-button" href="GuidePage.html">＋</a>
+          </div>
+          <div class="card small-card">
+            <table class="board-table">
+              <tbody>
+                <tr><td class="title">제목입니다.</td><td>24-01-20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 이용안내 -->
+        <div class="section small">
+          <div class="section-header">
+            <span>ℹ️ 이용안내</span>
+            <a class="plus-button" href="GuidePage.html">＋</a>
+          </div>
+          <div class="card small-card">
+            <table class="board-table">
+              <tbody>
+                <tr><td class="title">제목입니다.</td><td>24-01-19</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<footer class="bottom-nav">
+  <a class="nav-item" href="loan.html">
+    <img src="../Images/navigation1.png" alt="대출반납 아이콘" />
+    <span>대출·반납</span>
+  </a>
+  
+  <!-- 가운데 아이콘을 별도 div로 분리 -->
+  <div class="nav-center">
+    <a href="MainPage.html">
+      <img src="../Images/navigation2.png" alt="문중문고 아이콘" class="nav-center-icon" />
+    </a>
+  </div>
+
+  <a class="nav-item" href="../Pages/MyPage.Pgs/mypage.html">
+    <img src="../Images/navigation3.png" alt="마이페이지 아이콘" />
+    <span>마이페이지</span>
+  </a>
+</footer>
+
+  </div>
+</body>
+</html>
