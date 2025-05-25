@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인</title>
+  
+  <link rel="stylesheet" href="../Css/font.css" />
+  <link rel="stylesheet" href="../Css/loginstyle.css" />
+
+</head>
+
+<body>
+  <div class="container">
+    <img src="../Images/navigation2.png" alt="로고" class="logo" />
+    <h2>로그인</h2>
+    <form onsubmit="handleLogin(event)">
+      <input type="text" id="loginId" placeholder="아이디" required />
+      <input type="password" id="loginPassword" placeholder="비밀번호" required />
+      <button type="submit">로그인</button>
+    </form>
+    <p><a href="find_id.html">아이디 찾기</a> | <a href="reset_password.html">비밀번호 찾기</a></p>
+    <p>아직 계정이 없으신가요? <a href="signup.html">회원가입</a></p>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById('loginId').value;
+      const password = document.getElementById('loginPassword').value;
+  
+      // 로그인 성공 조건 예시 (임시 하드코딩)
+      if (id === "testuser" && password === "1234") {
+        window.location.href = "home.html"; // 팝업 없이 이동
+      } else {
+        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+      }
+    }
+  </script>  
+</body>
+</html>
