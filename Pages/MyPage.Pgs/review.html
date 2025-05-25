@@ -1,0 +1,79 @@
+<!-- review.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도서리뷰 상세</title>
+
+  <link rel="stylesheet" href="../Css/font.css" />
+  
+  <style>
+
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: white /* 노란색 */
+    }
+
+    body {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+    }
+
+    .top-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .back-btn {
+      font-size: 24px;
+      cursor: pointer;
+
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .review {
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .book-title {
+      font-weight: bold;
+    }
+    .content {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="back-btn" onclick="history.back()">←</div>
+    <h1>내 도서리뷰</h1>
+  </div>
+
+  <div class="review">
+    <div class="book-title">[책 제목 1]</div>
+    <div class="content">이 책은 정말 유익했어요. 추천합니다!</div>
+  </div>
+  <div class="review">
+    <div class="book-title">[책 제목 2]</div>
+    <div class="content">조금 어려웠지만 읽을 가치가 있어요.</div>
+  </div>
+</body>
+</html>

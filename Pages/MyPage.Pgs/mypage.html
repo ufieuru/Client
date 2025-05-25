@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>마이페이지</title>
+
+  <link rel="stylesheet" href="../Css/font.css" />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: white /* 노란색 */
+    }
+
+    body {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+    }
+    
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .back-btn {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .settings-btn {
+      font-size: 20px;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .user-info {
+      margin-bottom: 10px;
+    }
+    .user-info div {
+      margin-bottom: 4px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 16px 0;
+    }
+    .section-box {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .book-list {
+      display: flex;
+      gap: 8px;
+    }
+    .book-list img {
+      width: 80px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .loan-reserve-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .loan, .reserve {
+      flex: 1;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      position: relative;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      cursor: pointer;
+      color: #444;
+    }
+    .nav-link {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 1px solid #ccc;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="back-btn" onclick="alert('홈화면으로 이동')">←</div>
+    <h1>마이페이지</h1>
+    <div class="settings-btn" onclick="goToSettings()">⚙️</div>
+  </div>
+
+  <div class="user-info">
+    <div style="font-size: 19px; font-weight: bold;">김문중 <span style="font-size: 14px; font-weight: normal;">자과생</span></div>
+    <div>아이디: kmj123</div>
+    <div>비밀번호: ********</div>
+    <div>전화번호: 010-1234-5678</div>
+  </div>
+
+  <hr />
+
+  <div class="section-box">
+    <div class="section-title">나의 히스토리 (최근 3건)</div>
+    <div class="book-list">
+      <img src="https://via.placeholder.com/80x120?text=Hist1" />
+      <img src="https://via.placeholder.com/80x120?text=Hist2" />
+      <img src="https://via.placeholder.com/80x120?text=Hist3" />
+    </div>
+  </div>
+
+  <div class="loan-reserve-row">
+    <div class="loan">
+      <div class="section-title" onclick="goToDetail('loan')">대출장서</div>
+      <div class="book-list" id="loanBooks">
+        <img src="https://via.placeholder.com/80x120?text=Loan1" />
+        <img src="https://via.placeholder.com/80x120?text=Loan2" />
+      </div>
+      <div class="arrow" onclick="nextLoanBooks()">›</div>
+    </div>
+    <div class="reserve">
+      <div class="section-title" onclick="goToDetail('reserve')">예약장서</div>
+      <div class="book-list" id="reserveBooks">
+        <img src="https://via.placeholder.com/80x120?text=Reserve1" />
+        <img src="https://via.placeholder.com/80x120?text=Reserve2" />
+      </div>
+      <div class="arrow" onclick="nextReserveBooks()">›</div>
+    </div>
+  </div>
+
+  <div class="nav-link" onclick="goToPage('interest')">
+    관심 도서 <span>›</span>
+  </div>
+  <div class="nav-link" onclick="goToPage('wishlist')">
+    희망도서신청 <span>›</span>
+  </div>
+  <div class="nav-link" onclick="goToDetail('review')">
+    도서리뷰 <span>›</span>
+  </div>
+
+  <script>
+    function goToSettings() {
+      window.location.href = "settings.html";
+    }
+
+    function goToDetail(type) {
+      if (type === "loan") {
+        alert("대출장서 상세페이지로 이동");
+      } else if (type === "reserve") {
+        alert("예약장서 상세페이지로 이동");
+      } else if (type === "review") {
+        window.location.href = "review.html";
+      }
+    }
+
+    const loanImages = [
+      ["Loan1", "Loan2"],
+      ["Loan3", "Loan4"]
+    ];
+    const reserveImages = [
+      ["Reserve1", "Reserve2"],
+      ["Reserve3", "Reserve4"]
+    ];
+    let loanPage = 0;
+    let reservePage = 0;
+
+    function nextLoanBooks() {
+      loanPage = (loanPage + 1) % loanImages.length;
+      const container = document.getElementById("loanBooks");
+      container.innerHTML = loanImages[loanPage].map(img =>
+        `<img src="https://via.placeholder.com/80x120?text=${img}" alt="${img}">`
+      ).join("");
+    }
+
+    function nextReserveBooks() {
+      reservePage = (reservePage + 1) % reserveImages.length;
+      const container = document.getElementById("reserveBooks");
+      container.innerHTML = reserveImages[reservePage].map(img =>
+        `<img src="https://via.placeholder.com/80x120?text=${img}" alt="${img}">`
+      ).join("");
+    }
+  </script>
+
+</body>
+</html>
