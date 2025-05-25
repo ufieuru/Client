@@ -1,0 +1,198 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: white /* 노란색 */
+  }
+
+body {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+  }
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 90px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+}
+
+.login-btn {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.search-bar {
+  width: 90%;
+  height: 60px;
+  background: #FFFFFF;
+  border: 0.5px solid #625B71;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #625B71;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.status-buttons { /* 현재 상태 버튼 3개 */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+.notification { 
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FFF89C;
+  border: 0.4px solid #000000;
+  box-shadow: 2px 3px 6px rgba(29, 25, 43, 0.4);
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  color: #1E1E1E;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+}
+
+.notification:hover {
+  background: #FFC5B2;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: #FF9E8B;
+  color: white;
+  font-size: 12px;
+}
+
+.section-wrapper { 
+  width: 90%;
+  margin: 10px auto; /*상하 여백 30x */
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section.small {
+  margin-bottom: 10px; 
+}
+
+.plus-button {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.card {
+  background: #FEF7FF;
+  border: 0.4px solid #000000;
+  box-shadow: 2px 3px 6px rgba(29, 25, 43, 0.4);
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 16px;
+}
+
+.bottom-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.tall {
+  flex: 1;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.board-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.board-table .title {
+  color: #4B0082;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.board-table tr:last-child td {
+  border-bottom: none;
+}
