@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>북큐레이션</title>
+
+  <link rel="stylesheet" href="../Css/font.css" />
+  <link rel="stylesheet" href="../Css/Curation.css" />
+  <link rel="stylesheet" href="../Css/navi.css" />
+
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="back-btn" onclick="alert('홈화면으로 이동')">←</div>
+    <h1>북큐레이션</h1>
+  </div>
+
+  <div class="guide-buttons">
+    <button id="tab-guide" class="active" onclick="setTab('guide')">강의 교재/자료</button>
+    <button id="tab-notice" onclick="setTab('notice')">추천도서</button>
+  </div>
+
+  <div class="sub-buttons" id="sub-buttons">
+    <button id="sub-basic" class="active" onclick="setSubTab('basic')">전공기초</button>
+    <button id="sub-required" onclick="setSubTab('required')">전공필수</button>
+    <button id="sub-major" onclick="setSubTab('major')">전공</button>
+    <button id="sub-liberal" onclick="setSubTab('liberal')">교양</button>
+  </div>
+
+  <div class="tab-content" id="tab-content">
+    <!-- 여기에 텍스트북 리스트 내용이 들어갈 예정 -->
+    <p>전공기초 도서 목록입니다.</p>
+  </div>
+
+  <script>
+    let activeTab = 'guide';
+    let subTab = 'basic';
+
+    function setTab(tab) {
+      activeTab = tab;
+      document.getElementById("tab-guide").classList.remove("active");
+      document.getElementById("tab-notice").classList.remove("active");
+      document.getElementById("tab-" + tab).classList.add("active");
+
+      const subButtons = document.getElementById("sub-buttons");
+      const content = document.getElementById("tab-content");
+
+      if (tab === 'guide') {
+        subButtons.style.display = 'flex';
+        setSubTab('basic');
+      } else {
+        subButtons.style.display = 'none';
+        content.innerHTML = '<p>추천 도서 목록입니다.</p>';
+      }
+    }
+
+    function setSubTab(tab) {
+      subTab = tab;
+      const subTabs = ['basic', 'required', 'major', 'liberal'];
+      subTabs.forEach(id => {
+        document.getElementById("sub-" + id).classList.remove("active");
+      });
+      document.getElementById("sub-" + tab).classList.add("active");
+
+      const content = document.getElementById("tab-content");
+      const textMap = {
+        basic: '전공기초 도서 목록입니다.',
+        required: '전공필수 도서 목록입니다.',
+        major: '전공 도서 목록입니다.',
+        liberal: '교양 도서 목록입니다.'
+      };
+      content.innerHTML = '<p>' + textMap[tab] + '</p>';
+    }
+  </script>
+</body>
+</html>
+
+<footer class="bottom-nav">
+  <a class="nav-item" href="loan.html">
+    <img src="../Images/navigation1.png" alt="대출반납 아이콘" />
+    <span>대출·반납</span>
+  </a>
+  
+  <!-- 가운데 아이콘을 별도 div로 분리 -->
+  <div class="nav-center">
+    <a href="MainPage.html">
+      <img src="../Images/navigation2.png" alt="문중문고 아이콘" class="nav-center-icon" />
+    </a>
+  </div>
+
+  <a class="nav-item" href="../Pages/MyPage.Pgs/mypage.html">
+    <img src="../Images/navigation3.png" alt="마이페이지 아이콘" />
+    <span>마이페이지</span>
+  </a>
+</footer>
