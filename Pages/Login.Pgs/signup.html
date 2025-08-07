@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>회원가입</title>
   
-  <link rel="stylesheet" href="../Css/font.css" />
-  <link rel="stylesheet" href="../Css/loginstyle.css" />
+  <link rel="stylesheet" href="../../Css/font.css" />
+  <link rel="stylesheet" href="../../Css/loginstyle.css" />
 
 </head>
 <body>
     <div class="container">
-      <img src="../Images/navigation2.png" alt="로고" class="logo" />
+      <img src="../../Images/navigation2.png" alt="로고" class="logo" />
       <h2>회원가입</h2>
       <form onsubmit="handleSignup(event)">
         <input type="text" id="signupName" placeholder="이름" required />
@@ -28,17 +28,8 @@
         <input type="password" id="signupPassword" placeholder="비밀번호" required />
         <input type="password" id="signupPasswordConfirm" placeholder="비밀번호 확인" required />
 
-        <div class="radio-group">
-          <label><input type="radio" name="contactMethod" value="email" onchange="toggleContactInput()"> 이메일</label>
-          <label><input type="radio" name="contactMethod" value="phone" onchange="toggleContactInput()"> 전화번호</label>
-        </div>
-
-        <div id="emailInput" class="contact-input">
-          <input type="email" id="signupEmail" placeholder="이메일" />
-        </div>
-
         <div id="phoneInput" class="contact-input">
-          <input type="tel" id="signupPhone" placeholder="전화번호" />
+          <input type="tel" id="signupPhone" placeholder="전화번호" required />
         </div>
 
         <div class="agreement">
@@ -51,59 +42,57 @@
   </div>
 
   <script>
-    function toggleContactInput() {
-      const selected = document.querySelector('input[name="contactMethod"]:checked').value;
-      document.getElementById("emailInput").style.display = selected === "email" ? "block" : "none";
-      document.getElementById("phoneInput").style.display = selected === "phone" ? "block" : "none";
+  function toggleContactInput() {
+    const selected = document.querySelector('input[name="contactMethod"]:checked');
+    // 전화번호만 선택 가능하므로 phoneInput만 제어
+    if (selected && selected.value === "phone") {
+      document.getElementById("phoneInput").style.display = "block";
+    } else {
+      document.getElementById("phoneInput").style.display = "none";
+    }
+  }
+
+  function handleSignup(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+    const role = document.getElementById("signupRole").value;
+    const id = document.getElementById("signupId").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupPasswordConfirm").value;
+    const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
+    const phone = document.getElementById("signupPhone").value.trim();
+    const agreed = document.getElementById("agreePrivacy").checked;
+
+    if (!name || !role || !id || !password || !confirmPassword) {
+      alert("모든 필수 정보를 입력해주세요.");
+      return;
     }
 
-    function handleSignup(event) {
-      event.preventDefault();
-
-      const name = document.getElementById("signupName").value.trim();
-      const role = document.getElementById("signupRole").value;
-      const id = document.getElementById("signupId").value.trim();
-      const password = document.getElementById("signupPassword").value;
-      const confirmPassword = document.getElementById("signupPasswordConfirm").value;
-      const contactMethod = document.querySelector('input[name="contactMethod"]:checked');
-      const email = document.getElementById("signupEmail").value.trim();
-      const phone = document.getElementById("signupPhone").value.trim();
-      const agreed = document.getElementById("agreePrivacy").checked;
-
-      if (!name || !role || !id || !password || !confirmPassword) {
-        alert("모든 필수 정보를 입력해주세요.");
-        return;
-      }
-
-      if (!contactMethod) {
-        alert("이메일 또는 전화번호를 입력해주세요.");
-        return;
-      }
-
-      if (contactMethod.value === "email" && !email) {
-        alert("이메일을 입력해주세요.");
-        return;
-      }
-
-      if (contactMethod.value === "phone" && !phone) {
-        alert("전화번호를 입력해주세요.");
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        alert("비밀번호가 일치하지 않습니다.");
-        return;
-      }
-
-      if (!agreed) {
-        alert("개인정보 수집에 동의하셔야 합니다.");
-        return;
-      }
-
-      alert("회원가입이 완료되었습니다!");
-      // 실제 회원가입 처리 로직은 서버와 통신 필요
-      // window.location.href = "login.html";
+    if (!contactMethod) {
+      alert("전화번호를 선택하고 입력해주세요.");
+      return;
     }
-  </script>
+
+    if (contactMethod.value === "phone" && !phone) {
+      alert("전화번호를 입력해주세요.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    if (!agreed) {
+      alert("개인정보 수집에 동의하셔야 합니다.");
+      return;
+    }
+
+    alert("회원가입이 완료되었습니다!");
+    // window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
