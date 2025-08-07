@@ -51,7 +51,7 @@
         <p class="publisher">한국도서관회</p>
         <p class="code">020</p>
       </div>
-      <button class="loan-btn available">대출신청</button>
+      <button class="loan-btn available restricted-action">대출신청</button>
     </div>
 
     <!-- 도서 카드 2 -->
@@ -68,7 +68,7 @@
         <p class="publisher">태일사</p>
         <p class="code">025.42</p>
       </div>
-      <button class="loan-btn available">대출신청</button>
+      <button class="loan-btn available restricted-action">대출신청</button>
     </div>
 
     <!-- 도서 카드 3 -->
@@ -102,13 +102,32 @@
         <p class="publisher">한국도서관협회</p>
         <p class="code">025.3</p>
       </div>
-      <button class="loan-btn available">대출신청</button>
+      <button class="loan-btn available restricted-action">대출신청</button>
     </div>
   </section>
 
-  <!-- 연결된 스크립트 -->
-  <script src="script.js"></script>
+  <!-- 모달 팝업 -->
+  <div id="loan-modal" class="modal hidden">
+    <div class="modal-content">
+      <p>대출되었습니다</p>
+      <button id="modal-close-btn">확인</button>
+    </div>
+  </div>
+
+  <!-- 비회원 접근 제한 모달 -->
+  <div id="guest-modal" class="modal hidden">
+    <div class="modal-content">
+      <p>회원만 접근 가능합니다</p>
+      <button id="guest-modal-close-btn">확인</button>
+    </div>
+  </div>
+
 </body>
+  <!-- 연결된 스크립트 -->
+<script src="../Js/script.js"></script>
+<script src="../Js/loanmodal.js"></script>
+<script src="../Js/guestmodal.js"></script>
+
 </html>
 
 <footer class="bottom-nav">
