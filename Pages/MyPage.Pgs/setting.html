@@ -17,45 +17,68 @@
       max-width: 480px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+      background-color: #ffffff; /* 내용 영역 배경은 하얀색 */
     }
   
     .top-bar {
-      position: relative;
       display: flex;
-      justify-content: center; /* 제목 중앙 정렬 */
       align-items: center;
       margin-bottom: 16px;
-      background-color: #FFFDE7;
     }
     .top-bar button {
-      position: absolute;
-      left: 0;
+      font-size: 24px;
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 24px;
       color: black;
+      margin-right: 12px;
     }
     .top-bar h1 { font-size: 20px; margin-left: 12px; }    
     form { padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
-    input, textarea, button { font-size: 16px; padding: 10px; border-radius: 8px; border: none; }
+    input, textarea {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
     button { background: #007bff; color: white; cursor: pointer; }
-    button:hover {background: #0056b3;}
-  </style>
+    button:hover { background: #0056b3; }
+  
+    .back-btn {
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .back-btn:hover {
+      font-weight: 700;
+    }
+
+    /* 타이틀 중앙 고정 */
+    .top-bar {
+      position: relative;
+    }
+    .top-bar h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
+</style>
 
 
 </head>
 <body>
   <div class="top-bar">
-    <button 
-      onclick="history.back()" 
-      style="color: black; font-size: 24px; background: none; border: none; cursor: pointer;" 
-      onmouseenter="this.style.background='none';" 
-      onmouseleave="this.style.background='none';"
-    >
-      ←
-    </button>
+    <div class="back-btn" onclick="history.back()">←</div>
     
     <h1>회원정보수정</h1>
   </div>

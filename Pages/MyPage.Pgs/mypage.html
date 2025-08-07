@@ -11,14 +11,14 @@
     html, body {
       height: 100%;
       margin: 0;
-      background-color: white /* 노란색 */
+      background-color: white /* 노란색이었는데 흰색으로 변경 */
     }
 
     body {
       max-width: 480px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+      background-color: #ffffff; /* 내용 영역 배경은 하얀색 (배경과통일) */
     }
     
     .top-bar {
@@ -50,7 +50,7 @@
       margin: 16px 0;
     }
     .section-box {
-      background-color: #fff;
+      background-color: #ffffff;
       border-radius: 12px;
       padding: 10px;
       margin-bottom: 16px;
@@ -77,7 +77,7 @@
     }
     .loan, .reserve {
       flex: 1;
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 10px;
       border-radius: 12px;
       position: relative;
@@ -99,22 +99,87 @@
       font-weight: bold;
       cursor: pointer;
     }
-  </style>
+  
+    /* 상단바와 콘텐츠 간격 추가 */
+    .top-bar {
+      margin-bottom: 16px;
+    }
+    .user-info {
+      margin-bottom: 16px;
+    }
+
+    /* 타이틀 중앙 고정 */
+    .top-bar {
+      position: relative;
+    }
+    .top-bar h1 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+    }
+
+    .name-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .settings-btn {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* nav-links block spacing */
+    .nav-block {
+      margin: 24px 0;
+    }
+
+    /* nav-block spacing */
+    .nav-block {
+      margin: 24px 0;
+    }
+    /* move separator line up */
+    .nav-block + hr {
+      margin-top:     -20px;
+      margin-bottom: 16px;
+    }
+
+    /* 뒤로가기 버튼에 커서 올릴 때 글씨 굵게 */
+    .back-btn:hover {
+      font-weight: 700;
+    }
+    /* 네비게이션 링크(하이퍼링크) 호버 시 글씨 굵게 */
+    .nav-link:hover {
+      font-weight: 700;
+    }
+
+    /* nav-link hover visual change: underline and color change */
+    .nav-link:hover {
+      text-decoration: underline;
+      color: #007bff;
+    }
+
+    /* 대출장서, 예약장서 제목 hover visual change: underline and color change */
+    .section-title:hover {
+      text-decoration: underline;
+      color: #007bff;
+    }
+</style>
   <script defer src="script.js"></script>
 </head>
 <body>
 
   <div class="top-bar">
-    <div class="back-btn" onclick="alert('홈화면으로 이동')">←</div>
+    <div class="back-btn" onclick="window.location.href='../MainPage.html'">←</div>
     <h1>마이페이지</h1>
-    <div class="settings-btn" onclick="goToSettings()">⚙️</div>
   </div>
 
   <div class="user-info">
-    <div style="font-size: 19px; font-weight: bold;">김문중 <span style="font-size: 14px; font-weight: normal;">자과생</span></div>
-    <div>아이디: kmj123</div>
-    <div>비밀번호: ********</div>
-    <div>전화번호: 010-1234-5678</div>
+    <div class="name-row">
+      <div style="font-size: 19px; font-weight: bold;">김문중 <span style="font-size: 14px; font-weight: normal;">자과생</span></div>
+      <div class="settings-btn" onclick="window.location.href='setting.html'">⚙️</div>
+    </div>
+    <div>아이디: kmj123</div>    <div>전화번호: 010-1234-5678</div>
   </div>
 
   <hr />
@@ -145,7 +210,8 @@
       </div>
       <div class="arrow" onclick="nextReserveBooks()">›</div>
     </div>
-  </div>
+  </div><div class="nav-block">
+
 
   <div class="nav-link" onclick="goToPage('interest')">
     관심 도서 <span>›</span>
@@ -157,10 +223,15 @@
     도서리뷰 <span>›</span>
   </div>
 
-  <script>
-    function goToSettings() {
-      window.location.href = "settings.html";
+  </div>
+<hr />
+<script>
+    function goToSettings() { window.location.href = 'setting.html'; }
+
+    function goToPage(page) {
+      window.location.href = page + '.html';
     }
+
 
     function goToDetail(type) {
       if (type === "loan") {
