@@ -9,21 +9,7 @@
   <link rel="stylesheet" href="../Css/font.css" />
   <link rel="stylesheet" href="../Css/searchresult.css" />
   <style>
-    .button {
-      flex: 1;
-      padding: 15px;
-      background-color: #f0f0f0;
-      border: 1px solid #aaa;
-      cursor: pointer;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center; 
-      font-size: 16px;
-      min-width: 120px;
-      white-space: nowrap;
-      border-radius: 5px;
-    }
+
     .button:hover {
       background-color: #007bff; /* hover 시 배경색 */
       color: white;              /* hover 시 글자색 */
@@ -31,21 +17,33 @@
 
     .subject-tags {
       margin: 30px 0;
-      padding: 10px;
+      padding: 12px 16px;
       border: 1px solid #ddd;
       border-radius: 5px;
       background-color: #E3F2FD;
     }
+
+        
+
+    /* 장서상태 색상(백엔드 연동할 경우) */
+    .status-available { color: green; font-weight: bold; }
+    .status-reserved { color: orange; font-weight: bold; }
+    .status-unavailable { color: red; font-weight: bold; }
+
   </style>
 </head>
 <body>
 
-  <a id="arrow">←</a>
-  <h1>표제</h1>
+    <div class="page-header">
+      <div class="back-btn" onclick="location.href='SearchPage.html'">←</div>
+      <h1>표제</h1>
+    </div>
+
 
   <div class="container">
     <div class="cover-section">
       <div class="cover">표지</div>
+    </div>
       <div class="buttons-row">
         <div class="button">대출</div>
         <div class="button">예약</div>
@@ -53,15 +51,19 @@
           <span id="heartIcon" class="heart-icon empty">🤍</span> 관심
         </div>
       </div>
-    </div>
+  
 
-    <div class="info">
-      <p><strong>저자:</strong> OOO</p>
-      <p><strong>판사항:</strong> OOO</p>
-      <p><strong>발행사항:</strong> OOO</p>
-      <p><strong>형태사항:</strong> OOO</p>
-      <p><strong>청구기호:</strong> OOO</p>
-    </div>
+  <div class="info">
+    <p><strong>저자:</strong> <span id="author">—</span></p>
+    <p><strong>판사항:</strong> <span id="edition">—</span></p>
+    <p><strong>발행사항:</strong> <span id="publisher">—</span></p>
+    <p><strong>형태사항:</strong> <span id="format">—</span></p>
+    <p><strong>청구기호:</strong> <span id="callNumber">—</span></p>
+    <p><strong>장서상태:</strong> <span id="status" class="status">—</span></p>
+    <p><strong>총서정보:</strong> <span id="series">—</span></p>
+    <p><strong>상세정보:</strong> <span id="details">—</span></p>
+    <p><strong>주기:</strong> <span id="notes">—</span></p>
+  </div>
   </div>
 
   <div class="subject-tags">
@@ -110,7 +112,7 @@
 
   <script>
     // 모달
-    const arrow = document.getElementById('arrow');
+    const back_btn = document.getElementById('back-btn');
     const modal = document.getElementById('popupModal');
     const closeBtn = document.getElementById('closeModal');
 
