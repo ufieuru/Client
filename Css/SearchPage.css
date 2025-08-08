@@ -108,6 +108,10 @@ body {
   position: relative;
 }
 
+.sort-dropdown button {
+ padding: 6px;  /* 버튼 높이/폭 */
+}
+
 .sort-dropdown ul {
   list-style: none;
   padding: 0;
