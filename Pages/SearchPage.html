@@ -10,39 +10,22 @@
   <link rel="stylesheet" href="../Css/navi.css" />
 
   <style>
-    body {
-      background-color: white;
-    }
+    body { background-color: white; }
 
     .back-btn {
-      position: absolute;
-      left: 8px;
-      font-size: 24px;
-      cursor: pointer;
+      position: absolute; left: 8px; font-size: 24px; cursor: pointer;
       transition: font-weight 0.2s ease;
     }
+    .back-btn:active { font-weight: 700; }
 
-    .back-btn:active {
-      font-weight: 700;
+    #sort-toggle, .loan-btn, .heart-icon-wrapper, .back-btn, #sort-options li {
+      transition: all 0.2s ease; cursor: pointer;
+    }
+    #sort-toggle:hover, .loan-btn:hover, .heart-icon-wrapper:hover, .back-btn:hover, #sort-options li:hover {
+      transform: scale(1.05); font-weight: bold;
     }
 
-    #sort-toggle,
-    .loan-btn,
-    .heart-icon-wrapper,
-    .back-btn,
-    #sort-options li {
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    #sort-toggle:hover,
-    .loan-btn:hover,
-    .heart-icon-wrapper:hover,
-    .back-btn:hover,
-    #sort-options li:hover {
-      transform: scale(1.05);
-      font-weight: bold;
-    }
+    .cover-img { width: 100%; height: auto; display:block; }
   </style>
 </head>
 <body>
@@ -65,44 +48,146 @@
       <button id="sort-toggle">자모순 ▼</button>
       <ul id="sort-options" class="hidden">
         <li>자모순</li>
-        <li>자모순</li>
         <li>인기도순</li>
+        <li>정확도순</li>
       </ul>
     </div>
   </section>
 
   <!-- 도서 목록 -->
   <section class="book-list">
-    <!-- 도서 카드들 (생략: 기존 유지) -->
+
+    <!-- 도서 카드 1 -->
+    <div class="book-card">
+      <div class="book-cover">
+        <img class="cover-img auto-src" alt="문헌정보학의 이해 책 표지" loading="lazy"
+             data-srcs="../Images/book1.jpg|./images/book1.jpg|../images/book1.jpg|./Images/book1.jpg" />
+        <div class="heart-icon-wrapper" onclick="toggleHeart(this)">
+          <img class="heart-icon auto-src" loading="lazy"
+               data-srcs="../Images/blank_hearts.png|./images/blank_hearts.png|../images/blank_hearts.png|./Images/blank_hearts.png" />
+        </div>
+      </div>
+      <div class="book-info">
+        <a href="detail1.html" class="title book-title">문헌정보학의 이해</a>
+        <p class="author"><strong>저자:</strong> 한국문헌정보학회</p>
+        <p class="publisher"><span class="sub-info">출판사:</span> 한국도서관회</p>
+        <p class="code"><span class="sub-info">청구기호:</span> 020</p>
+        <p class="location"><span class="sub-info">소장위치:</span> 문헌정보학과 과방</p>
+      </div>
+      <button class="loan-btn available">대출신청</button>
+    </div>
+
+    <!-- 도서 카드 2 -->
+    <div class="book-card">
+      <div class="book-cover">
+        <img class="cover-img auto-src" alt="정보자료분류론 책 표지" loading="lazy"
+             data-srcs="../Images/book1.jpg|./images/book1.jpg|../images/book1.jpg|./Images/book1.jpg" />
+        <div class="heart-icon-wrapper" onclick="toggleHeart(this)">
+          <img class="heart-icon auto-src" loading="lazy"
+               data-srcs="../Images/blank_hearts.png|./images/blank_hearts.png|../images/blank_hearts.png|./Images/blank_hearts.png" />
+        </div>
+      </div>
+      <div class="book-info">
+        <a href="detail2.html" class="title book-title">정보자료분류론</a>
+        <p class="author"><strong>저자:</strong> 윤희윤</p>
+        <p class="publisher"><span class="sub-info">출판사:</span> 태일사</p>
+        <p class="code"><span class="sub-info">청구기호:</span> 025.42</p>
+        <p class="location"><span class="sub-info">소장위치:</span> 문헌정보학과 과방</p>
+      </div>
+      <button class="loan-btn available">대출신청</button>
+    </div>
+
+    <!-- 도서 카드 3 -->
+    <div class="book-card">
+      <div class="book-cover">
+        <img class="cover-img auto-src" alt="정보서비스론 책 표지" loading="lazy"
+             data-srcs="../Images/book2.jpg|./images/book2.jpg|../images/book2.jpg|./Images/book2.jpg" />
+        <div class="heart-icon-wrapper" onclick="toggleHeart(this)">
+          <img class="heart-icon auto-src" loading="lazy"
+               data-srcs="../Images/blank_hearts.png|./images/blank_hearts.png|../images/blank_hearts.png|./Images/blank_hearts.png" />
+        </div>
+      </div>
+      <div class="book-info">
+        <a href="detail3.html" class="title book-title">정보서비스론</a>
+        <p class="author"><strong>저자:</strong> 박준식</p>
+        <p class="publisher"><span class="sub-info">출판사:</span> 계명대학교출판부</p>
+        <p class="code"><span class="sub-info">청구기호:</span> 025.52</p>
+        <p class="location"><span class="sub-info">소장위치:</span> 문헌정보학과 과방</p>
+      </div>
+      <button class="loan-btn reserved">예약중</button>
+    </div>
+
+    <!-- 도서 카드 4 -->
+    <div class="book-card">
+      <div class="book-cover">
+        <img class="cover-img auto-src" alt="정보자원의 기술과 메타데이터 책 표지" loading="lazy"
+             data-srcs="../Images/book4.jpg|./images/book4.jpg|../images/book4.jpg|./Images/book4.jpg" />
+        <div class="heart-icon-wrapper" onclick="toggleHeart(this)">
+          <img class="heart-icon auto-src" loading="lazy"
+               data-srcs="../Images/red_hearts.png|./images/red_hearts.png|../images/red_hearts.png|./Images/red_hearts.png" />
+        </div>
+      </div>
+      <div class="book-info">
+        <a href="detail4.html" class="title book-title">정보자원의 기술과 메타데이터</a>
+        <p class="author"><strong>저자:</strong> 남태우, 이승민</p>
+        <p class="publisher"><span class="sub-info">출판사:</span> 한국도서관협회</p>
+        <p class="code"><span class="sub-info">청구기호:</span> 025.3</p>
+        <p class="location"><span class="sub-info">소장위치:</span> 문헌정보학과 과방</p>
+      </div>
+      <button class="loan-btn available">대출신청</button>
+    </div>
+
   </section>
+
+  <footer class="bottom-nav">
+    <a class="nav-item" href="loan.html">
+      <img class="auto-src" alt="대출반납 아이콘" loading="lazy"
+           data-srcs="../Images/navigation1.png|./images/navigation1.png|../images/navigation1.png|./Images/navigation1.png" />
+      <span>대출·반납</span>
+    </a>
+
+    <!-- 가운데 아이콘을 별도 div로 분리 -->
+    <div class="nav-center">
+      <a href="MainPage.html">
+        <img class="nav-center-icon auto-src" alt="문중문고 아이콘" loading="lazy"
+             data-srcs="../Images/navigation2.png|./images/navigation2.png|../images/navigation2.png|./Images/navigation2.png" />
+      </a>
+    </div>
+
+    <a class="nav-item" href="../Pages/MyPage.Pgs/mypage.html">
+      <img class="auto-src" alt="마이페이지 아이콘" loading="lazy"
+           data-srcs="../Images/navigation3.png|./images/navigation3.png|../images/navigation3.png|./Images/navigation3.png" />
+      <span>마이페이지</span>
+    </a>
+  </footer>
 
   <!-- 연결된 스크립트 -->
   <script>
     function toggleHeart(wrapper) {
       const icon = wrapper.querySelector('.heart-icon');
-      const isLiked = icon.src.includes('red_hearts');
-      icon.src = isLiked ? '../Images/blank_hearts.png' : '../Images/red_hearts.png';
+      const src = icon.getAttribute('src') || '';
+      const next = src && src.includes('red_hearts') ? '../Images/blank_hearts.png' : '../Images/red_hearts.png';
+      icon.setAttribute('src', next);
     }
+
+    // 이미지 경로 자동 보정: data-srcs="경로1|경로2|..." 중 유효한 경로를 순차 시도
+    function applyAutoSrc(img) {
+      const list = (img.getAttribute('data-srcs') || '').split('|').filter(Boolean);
+      if (!list.length) return;
+      let idx = 0;
+      const tryNext = () => {
+        if (idx >= list.length) return; // 전부 실패
+        img.src = list[idx++];
+      };
+      img.onerror = tryNext; // 실패 시 다음 경로 시도
+      tryNext(); // 첫 시도
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img.auto-src').forEach(applyAutoSrc);
+    });
   </script>
 
   <script src="script.js"></script>
 </body>
-
-<footer class="bottom-nav">
-  <a class="nav-item" href="loan.html">
-    <img src="../Images/navigation1.png" alt="대출반납 아이콘" />
-    <span>대출·반납</span>
-  </a>
-
-  <!-- 가운데 아이콘을 별도 div로 분리 -->
-  <div class="nav-center">
-    <a href="MainPage.html">
-      <img src="../Images/navigation2.png" alt="문중문고 아이콘" class="nav-center-icon" />
-    </a>
-  </div>
-
-  <a class="nav-item" href="../Pages/MyPage.Pgs/mypage.html">
-    <img src="../Images/navigation3.png" alt="마이페이지 아이콘" />
-    <span>마이페이지</span>
-  </a>
-</footer>
+</html>
