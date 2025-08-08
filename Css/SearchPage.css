@@ -72,6 +72,7 @@ body {
   border-radius: 50px;
   box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
   transition: border 0.15s ease, box-shadow 0.15s ease;
+  margin-bottom: 15px;
 }
 
 .search-box input {
