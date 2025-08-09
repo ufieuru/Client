@@ -28,7 +28,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
 }
 
 .title {
@@ -95,8 +94,8 @@ body {
   width: 100px;
   height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column; 
+  justify-content: flex-start;
   align-items: center;
   background:#FFF89C;
   border: 1px solid #000000;
@@ -106,9 +105,10 @@ body {
   cursor: pointer;
   color: #1E1E1E;
   font-weight: bold;
-  font-size: 14px;
-  text-align: center;
   text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  
   position: relative;
   transition: background 0.3s ease;
 }
@@ -119,13 +119,28 @@ body {
 
 .notification .badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  padding: 4px 8px;
+  top: 55%;
+  left: 40%;
+  transform: translate(-55%, -40%);
+  padding: 8px 15px;
   border-radius: 50%;
-  background: #FF9E8B;
-  color: white;
-  font-size: 12px;
+  background: #FFFDE7;
+  color: #000000;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 2;
+}
+/*권css*/
+.notification .unit {
+  position: absolute;
+  top: 54%;
+  left: 60%;
+  color: #000000;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 2;
 }
 
 /*배너*/
@@ -181,7 +196,7 @@ body {
 }
 
 .card {
-  background: #FEF7FF;
+  background:  #FFFDE7;
   border: 1.7px solid #000000;
   box-shadow: 1px 2px 5px rgba(29, 25, 43, 0.1);
   border-radius: 10px;
@@ -217,7 +232,7 @@ body {
 }
 /*테이블 제목텍스트*/
 .board-table .title {
-  color: #4B0082;
+  color:  #625B71;
   cursor: pointer;
   font-size: 16px;
   transition: color 0.3s ease, font-weight 0.3s ease;
