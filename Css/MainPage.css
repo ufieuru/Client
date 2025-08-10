@@ -123,13 +123,13 @@ body {
   transform: translate(-55%, -40%);
   padding: 8px 15px;
   border-radius: 50%;
-  background: #FFFDE7;
+  background: #FFF89C;
   color: #000000;
   text-align: center;
   align-items: center;
   font-size: 30px;
   font-weight: bold;
-  z-index: 2;
+  z-index: 1;
 }
 /*권css*/
 .notification .unit {
@@ -140,6 +140,21 @@ body {
   font-size: 25px;
   font-weight: bold;
   z-index: 2;
+}
+
+.notification .line {
+  position: absolute;
+  top: 62%;
+  left: 20%;
+  color: #000000;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 2;
+  transition: background 0.6s ease;
+}
+
+.notification:hover .line {
+  opacity: 0;
 }
 
 /*배너*/
