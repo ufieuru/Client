@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="/Css/font.css" />
   <link rel="stylesheet" href="/Css/Loan.css" />
+  <link rel="stylesheet" href="/Css/toolkit.css" />
 
 </head>
 
@@ -22,7 +23,6 @@
     <img src="/Images/navigation2.png" alt="로고" class="logo" />
 
     <form id="loan-form" method="POST" action="/loan">
-      
       <div class ="form-group">
         <input
             type="text"
@@ -41,54 +41,18 @@
       ※ 연속 대출은 예약자가 있는 경우에는 불가능하며, 없는 경우에도 3일이 지나야 가능합니다.<br>
       ※ 연체 시 연체일 만큼 대출이 금지됩니다.
     </div>
+  </div>
 
-  <script>
-    const input = document.getElementById('registerNumber');
-    const PREFIX = 'MJ';
+  <div id="loan-success-popup" class="popup-main">
+    <div class="popup-content">
+      <p>반납되었습니다.</p>
+      <div class="popup-buttons">
+        <button id="loan-more-btn" class="popup-btn" onclick="window.location.href='loan_loan.html'"> 반납 더 하기</button>
+        <button id="check-loan-btn" class="popup-btn" onclick="window.location.href='../MyPage.Pgs/mypage.html'"> 대출 정보 확인</button>
+      </div>
+    </div>
+  </div>
 
-    // 처음에는 항상 MJ로 시작
-    input.value = PREFIX;
-
-    input.addEventListener('input', () => {
-      if (!input.value.startsWith(PREFIX)) {
-        input.value = PREFIX;
-      }
-
-      // MJ 이후 문자열만 추출
-      let suffix = input.value.slice(PREFIX.length);
-
-      // 숫자만 허용 (문자 제거)
-      suffix = suffix.replace(/\D/g, '');
-
-      // 6자리까지만 유지
-      if (suffix.length > 6) {
-        suffix = suffix.slice(0, 6);
-      }
-
-      // 다시 입력창에 반영
-      input.value = PREFIX + suffix;
-    });
-
-    input.addEventListener('keydown', function (e) {
-      // 백스페이스로 MJ 지우지 못하게 막음
-      if (
-        (input.selectionStart <= PREFIX.length && e.key === 'Backspace') ||
-        (input.selectionStart < PREFIX.length && e.key.length === 1)
-      ) {
-        e.preventDefault();
-      }
-    });
-
-    document.getElementById('loan-form').addEventListener('submit', function (e) {
-      const full = input.value.trim();
-      const suffix = full.slice(PREFIX.length);
-
-      if (!/^\d{6}$/.test(suffix)) {
-        alert('숫자 6자리를 정확히 입력해주세요.');
-        e.preventDefault();
-      }
-    });
-
-  </script>
+  <script src="/js/loan.js"></script>
 </body>
 </html>

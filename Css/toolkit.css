@@ -43,11 +43,20 @@
   margin-bottom: 20px;
 }
 
-.popup-close-btn {
-  background-color: #625B71;
-  color: white;
-  border: none;
-  border-radius: 5px;
+/* 버튼 컨테이너 */
+.popup-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px; /* 메시지와 버튼 사이의 40px 간격 */
+}
+
+/* 버튼 공통 스타일 */
+.popup-btn {
   padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  flex: 1;
 }
