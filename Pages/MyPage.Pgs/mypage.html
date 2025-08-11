@@ -22,14 +22,31 @@
     }
     
     .top-bar {
+      position: relative;           /* 뒤로가기 버튼과 텍스트 배치용 */
       display: flex;
+      justify-content: center;      /* 중앙 기준으로 텍스트 정렬 */
       align-items: center;
-      justify-content: space-between;
+      background-color: #FFFDE7;
+      padding: 15px;
+      border-bottom: 1px solid #ccc; /* 하단 선 */
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 800;
     }
+
     .back-btn {
+      position: absolute;           /* 항상 왼쪽에 고정 */
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
+    .back-btn:hover,
+    .back-btn:active {
+      font-weight: 700;
+    }
+
     .settings-btn {
       font-size: 20px;
       cursor: pointer;
@@ -168,10 +185,9 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-
   <div class="top-bar">
-    <div class="back-btn" onclick="window.location.href='../MainPage.html'">←</div>
-    <h1>마이페이지</h1>
+    <a href="../MainPage.html" class="back-btn" aria-label="뒤로가기">←</a>
+    <span class="top-tittle">마이페이지</span>
   </div>
 
   <div class="user-info">
