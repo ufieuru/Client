@@ -17,70 +17,48 @@
       max-width: 480px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #ffffff; /* 내용 영역 배경은 하얀색 */
+      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
     }
   
-    .top-bar {
+   .top-bar {
+      position: relative;           /* 뒤로가기 버튼과 텍스트 배치용 */
       display: flex;
+      justify-content: center;      /* 중앙 기준으로 텍스트 정렬 */
       align-items: center;
-      margin-bottom: 16px;
+      background-color: #FFFDE7;
+      padding: 15px;
+      border-bottom: 1px solid #ccc; /* 하단 선 */
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 800;
     }
-    .top-bar button {
-      font-size: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: black;
-      margin-right: 12px;
-    }
-    .top-bar h1 { font-size: 20px; margin-left: 12px; }    
-    form { padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
-    input, textarea {
-      font-size: 16px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      font-size: 16px;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    button { background: #007bff; color: white; cursor: pointer; }
-    button:hover { background: #0056b3; }
-  
+
     .back-btn {
+      position: absolute;           /* 항상 왼쪽에 고정 */
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
-    .back-btn:hover {
+    .back-btn:hover,
+    .back-btn:active {
       font-weight: 700;
     }
 
-    /* 타이틀 중앙 고정 */
-    .top-bar {
-      position: relative;
-    }
-    .top-bar h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      margin: 0;
-    }
-</style>
+    .top-bar h1 { font-size: 20px; margin-left: 12px; }    
+    form { padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
+    input, textarea, button { font-size: 16px; padding: 10px; border-radius: 8px; border: none; }
+    button { background: #007bff; color: white; cursor: pointer; }
+    button:hover {background: #0056b3;}
+  </style>
 
 
 </head>
 <body>
   <div class="top-bar">
-    <div class="back-btn" onclick="history.back()">←</div>
-    
-    <h1>회원정보수정</h1>
+    <a href="mypage.html" class="back-btn" aria-label="뒤로가기">←</a>
+    <span class="top-tittle">회원정보수정</span>
   </div>
 
   <form>
