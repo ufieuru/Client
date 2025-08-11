@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>희망도서신청</title>
 
-
   <link rel="stylesheet" href="../Css/font.css" />
 
   <style>
@@ -19,56 +18,61 @@
       max-width: 480px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #ffffff; /* 내용 영역 배경은 하얀색 */
+      background-color: #FFFDE7; /* 내용 영역 배경은 하얀색 */
+    }
+    
+    .top-bar {
+      position: relative;           /* 뒤로가기 버튼과 텍스트 배치용 */
+      display: flex;
+      justify-content: center;      /* 중앙 기준으로 텍스트 정렬 */
+      align-items: center;
+      background-color: #FFFDE7;
+      padding: 15px;
+      border-bottom: 1px solid #ccc; /* 하단 선 */
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 800;
     }
 
-    .top-bar { display: flex; align-items: center; margin-bottom: 16px; }
-    .top-bar button { font-size: 20px; background: none; border: none; cursor: pointer; }
-    .top-bar h1 { font-size: 20px; margin-left: 12px; }
-    form { background: white; padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
-    input, textarea, button { font-size: 16px; padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
-    button { background: #007bff; color: white; cursor: pointer;}
-    button:hover {background: #0056b3;}
-  
     .back-btn {
+      position: absolute;           /* 항상 왼쪽에 고정 */
+      left: 10px;
       font-size: 24px;
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
-    .back-btn:hover {
+    .back-btn:hover,
+    .back-btn:active {
       font-weight: 700;
     }
 
-    /* 타이틀 중앙 고정 */
-    .top-bar {
-      position: relative;
-    }
-    .top-bar h1 {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0;
-    }
+    .top-bar h1 { font-size: 20px; margin-left: 12px; }
+    form { padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
+    input, textarea, button { font-size: 16px; padding: 10px; border-radius: 8px; border: none; }
+    button { background: #007bff; color: white; cursor: pointer; }
+    button:hover {background: #0056b3;}
+  </style>
 
-    /* placeholder 폰트 통일 */
-    textarea::placeholder {
-      font-family: inherit;
-    }
-</style>
 </head>
 <body>
   <div class="top-bar">
-    <div class="back-btn" onclick="history.back()">←</div>
-
-    <h1>희망도서신청</h1>
+    <a href="mypage.html" class="back-btn" aria-label="뒤로가기">←</a>
+    <span class="top-tittle">희망도서신청</span>
   </div>
+
   <form onsubmit="event.preventDefault(); alert('신청 완료!');">
     <label>책 제목</label>
     <input type="text" placeholder="책 제목 입력" required />
+
     <label>저자</label>
     <input type="text" placeholder="저자 입력" required />
+
     <label>기타 요청사항</label>
     <textarea placeholder="내용을 입력하세요"></textarea>
+    
     <button type="submit">신청하기</button>
   </form>
 </body>
-</html>
+</html>  
+
