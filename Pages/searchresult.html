@@ -9,6 +9,21 @@
   <link rel="stylesheet" href="../Css/font.css" />
   <link rel="stylesheet" href="../Css/searchresult.css" />
   <style>
+    .button {
+      flex: 1;
+      padding: 15px;
+      background-color: #f0f0f0;
+      border: 1px solid #aaa;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      font-size: 16px;
+      min-width: 120px;
+      white-space: nowrap;
+      border-radius: 5px;
+    }
 
     .button:hover {
       background-color: #007bff; /* hover 시 배경색 */
@@ -17,11 +32,12 @@
 
     .subject-tags {
       margin: 30px 0;
-      padding: 12px 16px;
+      padding: 10px;
       border: 1px solid #ddd;
       border-radius: 5px;
       background-color: #E3F2FD;
     }
+    
 
         
 
@@ -33,13 +49,11 @@
   </style>
 </head>
 <body>
-
-    <div class="page-header">
-      <div class="back-btn" onclick="location.href='SearchPage.html'">←</div>
-      <h1>표제</h1>
-    </div>
-
-
+  <div class="top-bar">
+    <a href="SearchPage.html" class="back-btn" aria-label="뒤로가기">←</a>
+    <span class="top-tittle">상세 페이지</span>
+  </div>
+  <div class="bg-wrap"
   <div class="container">
     <div class="cover-section">
       <div class="cover">표지</div>
@@ -134,17 +148,12 @@
     const likeButton = document.getElementById('likeButton');
     const heartIcon = document.getElementById('heartIcon');
 
-    likeButton.addEventListener('click', () => {
-      if (heartIcon.classList.contains('filled')) {
-        heartIcon.classList.remove('filled');
-        heartIcon.classList.add('empty');
-        heartIcon.textContent = '🤍';
-      } else {
-        heartIcon.classList.remove('empty');
-        heartIcon.classList.add('filled');
-        heartIcon.textContent = '❤️';
-      }
+    likeButton?.addEventListener('click', () => {
+      const filled = heartIcon.classList.toggle('filled');
+      heartIcon.classList.toggle('empty', !filled);
+      heartIcon.textContent = filled ? '❤️' : '🤍';
     });
+
 
     // 리뷰 등록
     const registerButton = document.getElementById('registerButton');
@@ -181,6 +190,22 @@
       typobox.style.display = 'none';
     });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const likeButton = document.getElementById('likeButton');
+  const heartIcon = document.getElementById('heartIcon');
+
+  if (likeButton && heartIcon) {
+    likeButton.addEventListener('click', () => {
+      const isFilled = heartIcon.classList.toggle('filled');
+      heartIcon.classList.toggle('empty', !isFilled);
+      heartIcon.textContent = isFilled ? '❤️' : '🤍';
+    });
+  }
+});
+</script>
+
 
 </body>
 </html>
+
