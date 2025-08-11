@@ -26,40 +26,36 @@
       display: flex;
       justify-content: center; /* 제목 중앙 정렬 */
       align-items: center;
-      margin-bottom: 16px;
+      border-bottom: 1px solid #ccc; /* 하단 선 */
+      margin-bottom: 15px;
       background-color: #ffffff;
     }
-    .top-bar button {
-      position: absolute;
-      left: 0;
-      background: none;
-      border: none;
-      cursor: pointer;
+    .back-btn {
+      position: absolute;           /* 항상 왼쪽에 고정 */
+      left: 10px;
       font-size: 24px;
-      color: black;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
+    .back-btn:hover,
+    .back-btn:active {
+      font-weight: 700;
+    }
+
 
     .top-bar h1 { font-size: 20px; margin-left: 12px; }
     form { padding: 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
     input, textarea, button { font-size: 16px; padding: 10px; border-radius: 8px; border: none; }
     button { background: #007bff; color: white; cursor: pointer; }
     button:hover {background: #0056b3;}
-  
-    .back-btn {
-      font-size: 24px;
-      cursor: pointer;
-    }
-    .back-btn:hover {
-      font-weight: 700;
-    }
 </style>
 
 </head>
 <body>
   <div class="top-bar">
-    <div class="back-btn" onclick="history.back()">←</div>
-
-    <h1>희망도서신청</h1>
+    <a href="mypage.html" class="back-btn" aria-label="뒤로가기">←</a>
+    <span class="top-tittle">희망도서신청</span>
   </div>
 
   <form onsubmit="event.preventDefault(); alert('신청 완료!');">
