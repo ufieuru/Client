@@ -12,39 +12,82 @@ body {
   background-color: #FFFDE7;
   }
 
+.top-bar {
+  position: relative;           /* 뒤로가기 버튼과 텍스트 배치용 */
+  display: flex;
+  justify-content: center;      /* 중앙 기준으로 텍스트 정렬 */
+  align-items: center;
+  background-color: #FFFDE7;
+  padding: 15px;
+  border-bottom: 1px solid #ccc; /* 하단 선 */
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
 .search-header {
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
-  border-bottom: 1px solid #ccc;
   background-color: #FFFDE7;
+  border-bottom: none; /* 밑줄 제거 */
 }
 
 .back-btn {
+  position: absolute;           /* 항상 왼쪽에 고정 */
+  left: 10px;
   font-size: 24px;
-  border: none;
-  background: none;
-  margin-bottom: 10px;
-  align-self: flex-start;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.back-btn:hover,
+.back-btn:active {
+  font-weight: 700;
+}
+
+.back-btn:hover,
+.back-btn:active {
+  font-weight: 700;
+}
+
+.top-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #333;
 }
 
 .search-box {
+  height: 60px;
   position: relative;
-  width: 100%;
+  width: 90%;
+  background: #FFFFFF;
   display: flex;
+  align-items: center;
+  justify-content: flex-start; /* ← 가운데 정렬 제거, 왼쪽 정렬 */
+  padding: 0 20px;
+  gap: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #625b71;
+  border-radius: 50px;
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+  transition: border 0.15s ease, box-shadow 0.15s ease;
+  margin-bottom: 15px;
 }
 
 .search-box input {
-  width: 100%;
-  padding: 10px 40px 10px 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 5px;   /* 왼쪽 여백 최소화 */
+  padding-right: 40px; /* X 버튼 간격 */
+  flex: 1;             /* 공간 꽉 채우기 */
 }
 
 .clear-btn {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -63,6 +106,10 @@ body {
 
 .sort-dropdown {
   position: relative;
+}
+
+.sort-dropdown button {
+ padding: 6px;  /* 버튼 높이/폭 */
 }
 
 .sort-dropdown ul {
